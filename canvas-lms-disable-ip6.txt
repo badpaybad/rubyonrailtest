@@ -1,0 +1,34 @@
+https://github.com/instructure/canvas-lms/wiki/Quick-Start
+
+
+sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
+sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
+sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=1
+
+folder
+config/database.yml domain.yml security.yml
+
+
+ sudo apt-get install ruby2.6 ruby2.6-dev zlib1g-dev libxml2-dev libsqlite3-dev libpq-dev libxmlsec1-dev curl build-essential
+
+sudo gem install bundler:2.2.24
+
+sudo bundle _2.2.24_ install
+sudo bundle _2.2.24_ update --without pulsar
+
+
+sudo apt -y install postgresql-12 postgresql-client-12
+
+
+/usr/lib/postgresql/10/bin/initdb ~/postgresql-data/ -E utf8
+/usr/lib/postgresql/10/bin/pg_ctl -D ~/postgresql-data/ -l ~/postgresql-data/server.log start
+/usr/lib/postgresql/10/bin/createdb canvas_development
+bundle exec rails db:initial_setup
+
+bundle exec rails db:load_initial_data
+
+
+sudo -u postgres createuser $USER
+sudo -u postgres psql -c "alter user $USER with superuser" postgres
+
+bundle exec rake canvas:compile_assets
