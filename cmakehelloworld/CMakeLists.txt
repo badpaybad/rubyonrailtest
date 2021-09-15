@@ -1,7 +1,11 @@
 cmake_minimum_required (VERSION 3.1)
 
-set(CMAKE_TOOLCHAIN_FILE "/home/dunp/work/vcpkg/scripts/buildsystems/vcpkg.cmake"
+#set(CMAKE_TOOLCHAIN_FILE "/home/dunp/work/vcpkg/scripts/buildsystems/vcpkg.cmake"
+#      CACHE STRING "")
+
+set(CMAKE_TOOLCHAIN_FILE "D:/robot/vcpkg/scripts/buildsystems/vcpkg.cmake"
       CACHE STRING "")
+
 #cmake -B build -S . -DCMAKE_TOOLCHAIN_FILE="/home/dunp/work/vcpkg/scripts/buildsystems/vcpkg.cmake"
 project (CMakeHelloWorld)
 
